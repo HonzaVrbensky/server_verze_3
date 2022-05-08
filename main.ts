@@ -4,18 +4,20 @@ radio.setTransmitSerialNumber(true)
 let my_serial = control.deviceSerialNumber()
 let string = "A, B, C, D: "
 let name = "send"
-name = "learn"
-let number = 1
+let number = 0
 let value = 0
 let list_of_votes = [0, 0, 0, 0]
 let list_of_microbits = [my_serial]
 input.onPinPressed(TouchPin.P0, function client_working() {
+    
     if (name == "send" && number == 0) {
         radio.sendValue("send", 1)
         basic.showNumber(1)
+        number = 1
     } else {
         radio.sendValue("send", 0)
         basic.showNumber(0)
+        number = 0
     }
     
 })

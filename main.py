@@ -5,19 +5,22 @@ my_serial = control.device_serial_number()
 
 string = "A, B, C, D: "
 name= "send"
-name = "learn"
-number= 1
+
+number= 0
 value= 0
 list_of_votes= [0,0,0,0]
 list_of_microbits = [my_serial]
 
 def client_working():
+    global number
     if name == "send" and number == 0:
         radio.send_value("send", 1)
         basic.show_number(1)
+        number = 1
     else:
         radio.send_value("send", 0)
         basic.show_number(0)
+        number = 0
 input.on_pin_pressed(TouchPin.P0, client_working)
 
 def received_serial_number(name, value):
